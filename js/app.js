@@ -102,3 +102,10 @@ window.addEventListener('load', function() {
     }
   }, 3000);
 });
+
+// Tải users từ Sheet ngay khi trang mở
+window.addEventListener('load', function() {
+  if (typeof GAS_URL !== 'undefined' && GAS_URL && !GAS_URL.includes('YOUR_GAS')) {
+    loadUsersFromSheet();
+  }
+});
