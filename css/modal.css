@@ -1,0 +1,24 @@
+/**
+ * MODAL — Nội Thất Đồng Nai
+ * Modal, PDF Preview
+ */
+
+  /* ── PDF PREVIEW ── */
+  .pdf-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 36px; max-width: 700px; margin: 0 auto; font-size: 11px; color: #333; }
+  .pdf-hd { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2.5px solid var(--navy); }
+  .pdf-co { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--navy); }
+  .pdf-co-sub { font-size: 9px; color: #888; margin-top: 2px; }
+  .pdf-qnum { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold2); text-align: right; }
+  .pdf-tbl { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+  .pdf-tbl th { background: var(--navy); color: var(--gold); padding: 7px 10px; font-size: 9px; text-align: left; }
+  .pdf-tbl td { padding: 6px 8px; border-bottom: 1px solid #eee; font-size: 10px; }
+  .pdf-tbl td img { display:block; margin:0 auto; }
+  .pdf-tr { display: flex; justify-content: flex-end; gap: 44px; padding: 2px 0; font-size: 10px; color: #555; }
+  .pdf-tr.grand { font-size: 13px; font-weight: 500; color: var(--navy); border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px; }
+
+  /* ── LINK ── */
+  .alink { color: var(--gold2); cursor: pointer; font-size: 11px; }
+  .alink:hover { text-decoration: underline; }
+  .del-x { color: var(--text3); cursor: pointer; font-size: 13px; }
+  .del-x:hover { color: #e24b4a; }
+

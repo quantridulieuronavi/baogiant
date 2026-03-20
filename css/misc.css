@@ -1,0 +1,18 @@
+/**
+ * MISC — Nội Thất Đồng Nai
+ * Links, Search, Role badges, Permission banner, Print
+ */
+
+  /* ── SEARCH BAR ── */
+  .search-bar { padding: 10px 14px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+
+  /* ── ROLE BADGE ── */
+  .role-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; }
+
+  /* ── PERMISSION BANNER ── */
+  .no-perm { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; }
+  .no-perm-icon { font-size: 40px; margin-bottom: 14px; }
+  .no-perm-title { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text); margin-bottom: 8px; }
+  .no-perm-sub { color: var(--text3); font-size: 12px; }
+
+  .section-divider { padding: 8px 0 4px; font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; grid-column: 1/-1; border-top: 1px dashed var(--border2); margin-top: 6px; }

@@ -1,0 +1,87 @@
+/**
+ * LOGIN — Nội Thất Đồng Nai
+ * Màn hình đăng nhập (Google + Email/Mật khẩu)
+ */
+
+#login-screen {
+  position: fixed; inset: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.login-box {
+  background: #fff; border-radius: 20px; padding: 48px 44px;
+  width: 400px; box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+  animation: loginFadeIn 0.4s ease;
+}
+@keyframes loginFadeIn {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0);    }
+}
+.login-logo { text-align: center; margin-bottom: 36px; }
+.login-logo .brand {
+  font-family: 'Playfair Display', serif; font-size: 22px;
+  color: var(--navy); font-weight: 600; margin-top: 10px;
+}
+.login-logo .sub { font-size: 11px; color: var(--text3); margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Google Sign-In button container */
+#google-signin-btn {
+  display: flex; justify-content: center; margin-bottom: 20px;
+  min-height: 44px;
+}
+.login-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 16px 0; color: var(--text3); font-size: 11px;
+}
+.login-divider::before, .login-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* Email/Password form */
+#password-login-section { display: none; }
+.login-label { font-size: 11px; color: var(--text2); display: block; margin-bottom: 5px; font-weight: 500; }
+.login-input {
+  width: 100%; padding: 11px 14px; border: 1.5px solid var(--border2);
+  border-radius: 10px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+  color: var(--text); background: var(--surface2); margin-bottom: 14px;
+  transition: border 0.15s, box-shadow 0.15s; outline: none;
+}
+.login-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,0.12); }
+
+/* Buttons */
+.btn-login {
+  width: 100%; padding: 12px; background: var(--navy); color: var(--gold);
+  border: none; border-radius: 10px; font-size: 13px; font-weight: 600;
+  font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.15s;
+  letter-spacing: 0.3px;
+}
+.btn-login:hover { background: #252545; }
+.btn-login-outline {
+  width: 100%; padding: 10px; background: transparent;
+  color: var(--text2); border: 1.5px solid var(--border2);
+  border-radius: 10px; font-size: 12px; font-family: 'DM Sans', sans-serif;
+  cursor: pointer; transition: all 0.15s; margin-top: 10px;
+}
+.btn-login-outline:hover { border-color: var(--gold); color: var(--gold2); background: var(--gold-light); }
+.btn-back-link {
+  background: none; border: none; color: var(--text3); font-size: 12px;
+  cursor: pointer; padding: 4px 0; margin-top: 8px; width: 100%;
+  font-family: 'DM Sans', sans-serif; text-align: center;
+}
+.btn-back-link:hover { color: var(--gold2); }
+
+/* Error message */
+#login-error {
+  display: none; background: #fff5f5; border: 1px solid #ffcccc;
+  color: #c0392b; border-radius: 8px; padding: 10px 14px;
+  font-size: 12px; line-height: 1.5; margin-bottom: 14px;
+  white-space: pre-line;
+}
+
+
+/* Google not configured warning */
+.google-not-configured {
+  text-align: center; padding: 16px; background: #fffbf0;
+  border: 1px dashed #e0c97a; border-radius: 10px; margin-bottom: 16px;
+  font-size: 12px; color: #8a6a00; line-height: 1.6;
+}

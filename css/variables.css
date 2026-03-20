@@ -1,0 +1,20 @@
+/**
+ * VARIABLES — Nội Thất Đồng Nai
+ * CSS Variables, Reset, Typography
+ */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1a1a2e; --navy2: #16213e; --gold: #c9a96e; --gold2: #b8860b;
+    --gold-light: rgba(201,169,110,0.12); --gold-border: rgba(201,169,110,0.3);
+    --bg: #f5f3ef; --surface: #ffffff; --surface2: #faf9f7;
+    --border: rgba(0,0,0,0.08); --border2: rgba(0,0,0,0.14);
+    --text: #1a1a1a; --text2: #555; --text3: #999;
+    --green-bg: #eaf3de; --green-fg: #3b6d11;
+    --amber-bg: #faeeda; --amber-fg: #854f0b;
+    --gray-bg: #f1efe8; --gray-fg: #5f5e5a;
+    --red-bg: #fcebeb; --red-fg: #a32d2d;
+    --blue-bg: #e6f1fb; --blue-fg: #185fa5;
+  }
+  html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; }
+

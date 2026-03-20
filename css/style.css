@@ -1,0 +1,12 @@
+/**
+ * style.css — Entry point CSS
+ * Nội Thất Đồng Nai — Phần Mềm Báo Giá v2.0
+ */
+
+@import url('variables.css');
+@import url('login.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('quote.css');
+@import url('modal.css');
+@import url('misc.css');
