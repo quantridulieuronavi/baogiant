@@ -211,13 +211,13 @@ function loadUsersFromSheet(onDone) {
       if (res.ok && res.users && res.users.length) {
         users = res.users.map(function(u) {
           return {
-            id:       parseInt(u['ID'])   || u['ID'],
-            name:     u['Họ tên']         || '',
-            email:    u['Email']          || '',
-            role:     u['Vai trò']        || 'staff',
-            status:   u['Trạng thái']     || 'active',
-            created:  u['Ngày tạo']       || '',
-            password: u['Mật khẩu']       || ''
+            id:       parseInt(u.id)       || u.id,
+            name:     u.name               || '',
+            email:    u.email              || '',
+            role:     u.role               || 'staff',
+            status:   u.status             || 'active',
+            created:  u.created            || '',
+            password: u.password           || ''
           };
         });
         userNextId = Math.max.apply(null, users.map(function(u){ return u.id||0; })) + 1;
