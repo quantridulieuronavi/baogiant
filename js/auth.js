@@ -197,3 +197,16 @@ function applyPermissions() {
   renderUsersTable();
   renderQuotesList();
 }
+
+// Khôi phục session khi reload
+(function() {
+  try {
+    var saved = sessionStorage.getItem('ntdn_user');
+    if (saved) {
+      currentUser = JSON.parse(saved);
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('app').classList.add('visible');
+      document.addEventListener('DOMContentLoaded', function() { initApp(); });
+    }
+  } catch(e) {}
+})();
