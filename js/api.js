@@ -6,7 +6,7 @@
  *    script.google.com → Deploy → Web App → Copy URL
  */
 
-var GAS_URL = 'YOUR_GAS_WEB_APP_URL';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyUaDgp6JQlBE-RahEQENG4SZ5GX-oQR7J5B3_OtZU5fXWvNop-e3aQ1_ycI9r1kgZt0w/exec';
 
 // ── Trạng thái kết nối ───────────────────────────────────────
 var gasConnected = false;   // true sau khi ping thành công
