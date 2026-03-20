@@ -132,6 +132,7 @@ function loginSuccess() {
   document.getElementById('login-error').textContent = '';
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app').classList.add('visible');
+  try { sessionStorage.setItem('ntdn_user', JSON.stringify(currentUser)); } catch(e) {}
   initApp();
 }
 
@@ -144,6 +145,7 @@ function doLogout() {
   }
   currentUser = null;
   quoteRows = [];
+  try { sessionStorage.removeItem('ntdn_user'); } catch(e) {}
   document.getElementById('app').classList.remove('visible');
   document.getElementById('login-screen').style.display = 'flex';
   showGoogleForm();
