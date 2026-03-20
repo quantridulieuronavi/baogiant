@@ -46,21 +46,42 @@ function handleGoogleCredential(response) {
   try {
     var payload = JSON.parse(atob(response.credential.split('.')[1]));
     var email   = (payload.email || '').toLowerCase();
-    var found   = users.find(function(u) {
-      return u.email.replace('\u0040','@').toLowerCase() === email;
-    });
-    if (found) {
-      currentUser = Object.assign({}, found, {
-        roleKey: found.role,
-        googleToken: response.credential,
-        avatar: payload.picture || ''
+
+    function checkAndLogin() {
+      var found = users.find(function(u) {
+        return u.email.replace('\u0040', '@').toLowerCase() === email;
       });
-      loginSuccess();
-    } else {
-      showLoginError('Email ' + email + ' chưa được cấp quyền.\nLiên hệ Admin để được thêm vào hệ thống.');
+      if (found) {
+        currentUser = Object.assign({}, found, {
+          roleKey:     found.role,
+          googleToken: response.credential,
+          avatar:      payload.picture || ''
+        });
+        loginSuccess();
+      } else {
+        showLoginError(
+          'Email ' + email + ' chưa được cấp quyền.\n' +
+          'Kiểm tra lại cột Email trong sheet NguoiDung.'
+        );
+      }
     }
+
+    // users[] vẫn là dữ liệu hardcode → tải từ Sheet trước
+    if (users.length === 0 || users.every(function(u) {
+      return !u.email || u.email.includes('noithatdn.vn');
+    })) {
+      showLoginError('⏳ Đang tải danh sách nhân viên...');
+      loadUsersFromSheet(function() {
+        document.getElementById('login-error').textContent = '';
+        checkAndLogin();
+      });
+    } else {
+      checkAndLogin();
+    }
+
   } catch (err) {
     showLoginError('Lỗi xác thực Google. Vui lòng thử lại.');
+    console.error(err);
   }
 }
 
@@ -69,16 +90,33 @@ function doPasswordLogin() {
   var email = (document.getElementById('login-email').value || '').trim().toLowerCase();
   var pass  = (document.getElementById('login-pass').value  || '').trim();
   if (!email || !pass) { showLoginError('Vui lòng nhập đầy đủ thông tin.'); return; }
-  var found = users.find(function(u) {
-    return u.email.replace('\u0040','@').toLowerCase() === email && u.password === pass;
-  });
-  if (found) {
-    currentUser = Object.assign({}, found, { roleKey: found.role });
-    loginSuccess();
+
+  function checkAndLogin() {
+    var found = users.find(function(u) {
+      return u.email.replace('\u0040', '@').toLowerCase() === email
+          && u.password === pass;
+    });
+    if (found) {
+      currentUser = Object.assign({}, found, { roleKey: found.role });
+      loginSuccess();
+    } else {
+      showLoginError('Email hoặc mật khẩu không đúng.');
+      document.getElementById('login-pass').value = '';
+      document.getElementById('login-pass').focus();
+    }
+  }
+
+  // users[] vẫn là dữ liệu hardcode → tải từ Sheet trước
+  if (users.length === 0 || users.every(function(u) {
+    return !u.email || u.email.includes('noithatdn.vn');
+  })) {
+    showLoginError('⏳ Đang tải danh sách nhân viên...');
+    loadUsersFromSheet(function() {
+      document.getElementById('login-error').textContent = '';
+      checkAndLogin();
+    });
   } else {
-    showLoginError('Email hoặc mật khẩu không đúng.');
-    document.getElementById('login-pass').value = '';
-    document.getElementById('login-pass').focus();
+    checkAndLogin();
   }
 }
 function loginKeydown(e) { if (e.key === 'Enter') doPasswordLogin(); }
