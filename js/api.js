@@ -201,9 +201,12 @@ function deleteQuoteFromSheet(id) {
 // ════════════════════════════════════════════════════════════
 
 /** Tải danh sách user từ Sheet */
-function loadUsersFromSheet() {
-  if (!GAS_URL || GAS_URL === 'YOUR_GAS_WEB_APP_URL') return;
-  gasGet({ action: 'getUsers' })
+function loadUsersFromSheet(onDone) {
+  if (!GAS_URL || GAS_URL === 'YOUR_GAS_WEB_APP_URL') {
+    if (onDone) onDone(false);
+    return Promise.resolve(false);
+  }
+  return gasGet({ action: 'getUsers' })
     .then(function(res) {
       if (res.ok && res.users && res.users.length) {
         users = res.users.map(function(u) {
@@ -218,8 +221,15 @@ function loadUsersFromSheet() {
           };
         });
         userNextId = Math.max.apply(null, users.map(function(u){ return u.id||0; })) + 1;
-        renderUsersTable();
+        if (onDone) onDone(true);
+        return true;
       }
+      if (onDone) onDone(false);
+      return false;
+    })
+    .catch(function() {
+      if (onDone) onDone(false);
+      return false;
     });
 }
 
