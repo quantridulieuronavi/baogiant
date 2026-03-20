@@ -7,7 +7,7 @@
 // ⚠️ Thay bằng Google Client ID của bạn:
 // console.cloud.google.com → APIs & Services → Credentials
 // → Create OAuth 2.0 Client ID → Web application
-var GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+var GOOGLE_CLIENT_ID = '359579898140-o91uuu3hu11jaeghqmcnq6kfve14aaed.apps.googleusercontent.com';
 
 // ══ TOGGLE FORM ════════════════════════════════════════
 function showPasswordForm() {
