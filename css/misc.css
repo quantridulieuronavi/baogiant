@@ -16,3 +16,17 @@
   .no-perm-sub { color: var(--text3); font-size: 12px; }
 
   .section-divider { padding: 8px 0 4px; font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; grid-column: 1/-1; border-top: 1px dashed var(--border2); margin-top: 6px; }
+
+@media print {
+  body * { visibility: hidden; }
+  #page-preview, #page-preview * { visibility: visible; }
+  #page-preview { position: fixed; inset: 0; }
+  #page-preview > div:first-child { display: none !important; }
+  .pdf-wrap {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+  }
+}
